@@ -592,7 +592,7 @@
 				PREBINDING = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_IDENTIFIER}";
 				PRODUCT_NAME = "Time Tracker";
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				VALID_ARCHS = "x86_64 i386 ppc";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
@@ -626,7 +626,7 @@
 				PREBINDING = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_IDENTIFIER}";
 				PRODUCT_NAME = "Time Tracker";
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				VALID_ARCHS = "x86_64 i386 ppc";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
@@ -657,7 +657,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "${BUNDLE_IDENTIFIER}";
 				PRODUCT_NAME = "Time Tracker";
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 				VALID_ARCHS = "x86_64 i386 ppc";
 				WRAPPER_EXTENSION = app;
 			};
