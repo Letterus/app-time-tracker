@@ -46,11 +46,12 @@ AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
 STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
-Copyright © 2006-2007 Apple Inc. All Rights Reserved
+Copyright ï¿½ 2006-2007 Apple Inc. All Rights Reserved
 
 */
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 
 @interface CaseInsensitivePredicateTemplate : NSPredicateEditorRowTemplate 
 

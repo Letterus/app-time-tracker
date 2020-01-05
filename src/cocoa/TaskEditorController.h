@@ -5,7 +5,8 @@
 //  Copyright 2010 N/A. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 //#import <BWToolkitFramework/BWToolkitFramework.h>
 #import "TTask.h"
 

@@ -5,7 +5,8 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 
 @interface WeekdayPredicateTemplate : NSPredicateEditorRowTemplate {
 

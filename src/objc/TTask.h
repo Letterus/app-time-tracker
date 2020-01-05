@@ -6,7 +6,8 @@
 //  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 #import <Foundation/NSPredicate.h>
 #import "TWorkPeriod.h"
 #import "ITask.h"

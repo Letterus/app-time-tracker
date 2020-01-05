@@ -1,4 +1,5 @@
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 
 @class MainController;
 

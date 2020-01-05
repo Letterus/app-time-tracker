@@ -15,7 +15,8 @@
 // Red Sweater Software or Daniel Jalkut for any damages caused by such use.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 
 @protocol IMovingDelegate
 

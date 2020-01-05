@@ -1,8 +1,9 @@
 /* MainController */
 
 
-#import <Cocoa/Cocoa.h>
-#import <Appkit/NSArrayController.h>
+#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
+#import <AppKit/NSArrayController.h>
 #import "TProject.h"
 #import "TTask.h"
 #import "TWorkPeriod.h"
