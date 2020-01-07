@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <development version="8000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -63,8 +62,8 @@
                         <connections>
                             <binding destination="-2" name="value" keyPath="self.taskName" id="41">
                                 <dictionary key="options">
-                                    <integer key="NSContinuouslyUpdatesValue" value="1"/>
-                                    <integer key="NSValidatesImmediately" value="1"/>
+                                    <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                    <bool key="NSValidatesImmediately" value="YES"/>
                                 </dictionary>
                             </binding>
                         </connections>
@@ -103,7 +102,7 @@ Gw
             <connections>
                 <outlet property="delegate" destination="-2" id="10"/>
             </connections>
-            <point key="canvasLocation" x="140" y="151"/>
+            <point key="canvasLocation" x="141" y="150.5"/>
         </window>
     </objects>
 </document>
