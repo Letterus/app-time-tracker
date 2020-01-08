@@ -1,4 +1,4 @@
-#include <IOKit/IOKitLib.h>
+//#include <IOKit/IOKitLib.h>
 #import <AppKit/NSTableColumn.h>
 #include <assert.h>
 
@@ -15,9 +15,9 @@
 #import "TTPredicateEditorViewController.h"
 #import "SearchQuery.h"
 #import "TTParsedPredicate.h"
-#ifndef APPSTORE
-#import <Sparkle/Sparkle.h>
-#endif
+//#ifndef APPSTORE
+//#import <Sparkle/Sparkle.h>
+//#endif
 #import "TaskEditorController.h"
 
 
@@ -920,7 +920,7 @@
     }
     [rootObject setValue:[NSNumber numberWithBool:_decimalHours] forKey:PREFKEY_DECIMAL_HOURS];
     
-    BOOL successfullySaved = FALSE;
+    BOOL successfullySaved = NO;
     NSError *error = nil;
     // First write to temp file
     NSString *tempPath = [path stringByAppendingString:@".temp"];
@@ -930,7 +930,7 @@
         if ([manager removeItemAtPath:path error:&error]) {
             // Then copy file over to the right place
             if ([manager moveItemAtPath:tempPath toPath:path error:&error]) {
-                successfullySaved = TRUE;
+                successfullySaved = YES;
             }
         }
     }

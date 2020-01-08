@@ -194,10 +194,10 @@
         }
     }
     switch ([compPred predicateOperatorType]) {
-        case NSLessThanOrEqualToComparison:
+        case NSLessThanOrEqualToPredicateOperatorType:
             [comparator selectItemAtIndex:0];
             break;
-        case NSGreaterThanOrEqualToComparison: 
+        case NSGreaterThanOrEqualToPredicateOperatorType: 
             [comparator selectItemAtIndex:1];
             break;
         case NSEqualToPredicateOperatorType:

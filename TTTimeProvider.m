@@ -288,8 +288,8 @@ static id staticInstance;
 }
 
 - (NSPredicate*) predicateWithSingleMonthFromToday:(NSInteger)months {
-    NSPredicate *startPredicate = [self predicateWithMonthStartDateFromToday:months comparisonType:NSGreaterThanOrEqualToComparison];
-    NSPredicate *endPredicate = [self predicateWithMonthEndDateFromToday:months comparisonType:NSLessThanOrEqualToComparison];
+    NSPredicate *startPredicate = [self predicateWithMonthStartDateFromToday:months comparisonType:NSGreaterThanOrEqualToPredicateOperatorType];
+    NSPredicate *endPredicate = [self predicateWithMonthEndDateFromToday:months comparisonType:NSLessThanOrEqualToPredicateOperatorType];
     return [NSCompoundPredicate andPredicateWithSubpredicates:
             [NSArray arrayWithObjects:startPredicate, endPredicate, nil]];
     
