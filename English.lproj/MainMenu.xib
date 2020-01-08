@@ -118,7 +118,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="525" height="228"/>
                                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                 <subviews>
-                                                    <splitView fixedFrame="YES" autosaveName="customerProjectTaskSplit" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2446" customClass="BWSplitView">
+                                                    <splitView fixedFrame="YES" autosaveName="customerProjectTaskSplit" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2446">
                                                         <rect key="frame" x="0.0" y="0.0" width="525" height="228"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
@@ -337,7 +337,7 @@
                                                 <rect key="frame" x="0.0" y="237" width="525" height="225"/>
                                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                 <subviews>
-                                                    <splitView fixedFrame="YES" dividerStyle="thin" translatesAutoresizingMaskIntoConstraints="NO" id="2451" customClass="BWSplitView">
+                                                    <splitView fixedFrame="YES" dividerStyle="thin" translatesAutoresizingMaskIntoConstraints="NO" id="2451">
                                                         <rect key="frame" x="0.0" y="0.0" width="525" height="225"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
@@ -751,10 +751,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="525" height="23"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2490" customClass="BWAnchoredButton">
+                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2490">
                                                 <rect key="frame" x="-1" y="-1" width="32" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="only" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2491" customClass="BWAnchoredButtonCell">
+                                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="only" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2491">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
@@ -762,10 +762,10 @@
                                                     <action selector="clickedAddTimePeriod:" target="211" id="2492"/>
                                                 </connections>
                                             </button>
-                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2493" customClass="BWAnchoredButton">
+                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2493">
                                                 <rect key="frame" x="30" y="-1" width="32" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRemoveTemplate" imagePosition="only" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2494" customClass="BWAnchoredButtonCell">
+                                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRemoveTemplate" imagePosition="only" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2494">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="smallSystem"/>
                                                 </buttonCell>
