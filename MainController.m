@@ -813,16 +813,38 @@
 }
 
 - (NSString *) pathForDataFile : (bool) createIfNecessary
-{ 
-	NSFileManager *fileManager = [NSFileManager defaultManager]; 
-	NSString *folder = @"~/Library/Application Support/TimeTracker/"; 
-	folder = [folder stringByExpandingTildeInPath]; 
-	if ([fileManager fileExistsAtPath: folder] == NO) { 
-		[fileManager createDirectoryAtPath: folder attributes: nil]; 
-	} 
-	NSString *fileName = @"data.plist"; 
-	return [folder stringByAppendingPathComponent: fileName]; 
-} 
+{
+    NSError *error = nil;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+
+    NSURL* appSupportDir = [fileManager
+             URLForDirectory:NSApplicationSupportDirectory
+                    inDomain:NSUserDomainMask
+           appropriateForURL:nil
+                      create:NO
+                       error:&error];
+    
+    NSURL *url = [appSupportDir URLByAppendingPathComponent:@"TimeTracker"];
+    NSString *path = [url path];
+    
+    if ([fileManager fileExistsAtPath:path] == NO) {
+        [fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        
+        if (error) {
+            NSLog(@"Error creating data directory %@", error);
+            [[NSAlert alertWithMessageText:@"Error creating data directory"
+                            defaultButton:@"Dismiss"
+                          alternateButton:nil
+                              otherButton:nil
+                informativeTextWithFormat:@"Detailed error: %@", error] runModal];
+            
+            return nil;
+        }
+    }
+    
+    NSString *fileName = @"data.plist";
+    return [path stringByAppendingPathComponent: fileName];
+}
 
 - (NSString *) pathForDataFile
 {
@@ -881,7 +903,7 @@
 	NSMutableDictionary * rootObject; 
 	rootObject = [NSMutableDictionary dictionary]; 
 
-    int count = [_lruTasks count];
+    NSUInteger count = [_lruTasks count];
     NSMutableData *lruData = [[NSMutableData alloc] initWithCapacity:count * sizeof(int)];
     [lruData setLength:count * sizeof(int)];
     int* ptrData = (int*) [lruData mutableBytes];
@@ -924,14 +946,15 @@
     NSError *error = nil;
     // First write to temp file
     NSString *tempPath = [path stringByAppendingString:@".temp"];
+
     if ([NSKeyedArchiver archiveRootObject:rootObject toFile:tempPath]) {
         // then delete the old copy
         NSFileManager *manager = [NSFileManager defaultManager];
-        if ([manager removeItemAtPath:path error:&error]) {
-            // Then copy file over to the right place
-            if ([manager moveItemAtPath:tempPath toPath:path error:&error]) {
-                successfullySaved = YES;
-            }
+        [manager removeItemAtPath:path error:&error];
+        
+        // Then copy file over to the right place
+        if ([manager moveItemAtPath:tempPath toPath:path error:&error]) {
+            successfullySaved = YES;
         }
     }
 	
@@ -948,13 +971,14 @@
 
 	timeSinceSave = 0;
 	
+    NSError *autoSaveError = nil;
     if (_autosaveCsv && _autosaveCsvFilename != nil) {
         NSString *data = [self serializeData];
         [data writeToFile:_autosaveCsvFilename 
                atomically:YES 
                  encoding:NSUTF8StringEncoding
-                    error:&error];
-        NSLog(@"saved file %@ error: %@", _autosaveCsvFilename, error);
+                    error:&autoSaveError];
+        NSLog(@"saved file %@ error: %@", _autosaveCsvFilename, autoSaveError);
     }
 }
 
