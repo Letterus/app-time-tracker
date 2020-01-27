@@ -178,7 +178,6 @@
 
 - (void) updateStartStopState;
 - (void) updateProminentDisplay;
-- (void) reloadWorkPeriods;
 - (NSString *) pathForDataFile;
 - (bool) dataFileExists;
 - (void) validateToolbarFilterItems;

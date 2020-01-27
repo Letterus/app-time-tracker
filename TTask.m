@@ -176,6 +176,11 @@ static int _maxTaskId = 1;
     _maxTaskId = MAX(_taskId, _maxTaskId);
 }
 
+- (int) taskId
+{
+    return _taskId;
+}
+
 - (void) setFilterPredicate:(NSPredicate *) predicate {
 	if (_filterPredicate == predicate) {
 		return;

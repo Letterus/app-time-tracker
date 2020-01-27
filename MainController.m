@@ -1645,6 +1645,11 @@
     [tvTasks reloadData];
 }
 
+-(BOOL) decimalHours
+{
+    return _decimalHours;
+}
+
 -(NSString*) autosaveCsvFilename 
 {
     return _autosaveCsvFilename;
