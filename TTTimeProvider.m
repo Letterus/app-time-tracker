@@ -189,7 +189,7 @@ static id staticInstance;
 #pragma mark predicate day functions
 
 - (NSPredicate*) predicateWithStartDateFromToday:(NSInteger)days  comparisonType:(NSInteger)comparisonType {
-    NSString *startVariable = [NSString stringWithFormat:@"daysAgoStart_%d", days];
+    NSString *startVariable = [NSString stringWithFormat:@"daysAgoStart_%ld", (long) days];
     NSPredicate *result = [NSComparisonPredicate predicateWithLeftExpression:[NSExpression expressionForKeyPath:@"startTime"] 
                                                              rightExpression:[NSExpression expressionForVariable:startVariable] 
                                                                     modifier:NSDirectPredicateModifier 
@@ -199,7 +199,7 @@ static id staticInstance;
 }
 
 - (NSPredicate*) predicateWithEndDateFromToday:(NSInteger)days  comparisonType:(NSInteger)comparisonType {
-    NSString *endVariable = [NSString stringWithFormat:@"daysAgoEnd_%d", days];
+    NSString *endVariable = [NSString stringWithFormat:@"daysAgoEnd_%ld", (long) days];
     NSPredicate *result = [NSComparisonPredicate predicateWithLeftExpression:[NSExpression expressionForKeyPath:@"endTime"]
                                                              rightExpression:[NSExpression expressionForVariable:endVariable]
                                                                     modifier:NSDirectPredicateModifier
@@ -209,7 +209,7 @@ static id staticInstance;
 }
 
 - (NSPredicate*) predicateWithSingleDayFromToday:(NSInteger)days {
-    NSString *startVariable = [NSString stringWithFormat:@"daysAgoStart_%d", days];
+    NSString *startVariable = [NSString stringWithFormat:@"daysAgoStart_%ld", (long) days];
     NSPredicate *result = [NSComparisonPredicate predicateWithLeftExpression:[NSExpression expressionForKeyPath:@"date"] 
                                                              rightExpression:[NSExpression expressionForVariable:startVariable] 
                                                                     modifier:NSDirectPredicateModifier 
@@ -221,7 +221,7 @@ static id staticInstance;
 #pragma mark predicate week functions
 
 - (NSPredicate*) predicateWithWeekStartDateFromToday:(NSInteger)weeks comparisonType:(NSInteger)compType {
-    NSString *startVariable = [NSString stringWithFormat:@"weeksAgoStart_%d", weeks];
+    NSString *startVariable = [NSString stringWithFormat:@"weeksAgoStart_%ld", (long) weeks];
 
     NSPredicate *result = [NSComparisonPredicate predicateWithLeftExpression:[NSExpression expressionForKeyPath:@"date"]
                                                              rightExpression:[NSExpression expressionForVariable:startVariable]
@@ -239,7 +239,7 @@ static id staticInstance;
                                                                         type:compType
                                                                      options:0];
     return result;*/
-    NSString *startVariable = [NSString stringWithFormat:@"weeksAgoEnd_%d", weeks];
+    NSString *startVariable = [NSString stringWithFormat:@"weeksAgoEnd_%ld", (long) weeks];
     
     NSPredicate *result = [NSComparisonPredicate predicateWithLeftExpression:[NSExpression expressionForKeyPath:@"date"]
                                                              rightExpression:[NSExpression expressionForVariable:startVariable]
@@ -251,8 +251,8 @@ static id staticInstance;
 }
 
 - (NSPredicate*) predicateWithSingleWeekFromToday:(NSInteger)weeks {
-    NSString *start = [NSString stringWithFormat:@"weeksAgoStart_%d", weeks];
-    NSString *end = [NSString stringWithFormat:@"weeksAgoEnd_%d",weeks];
+    NSString *start = [NSString stringWithFormat:@"weeksAgoStart_%ld", (long) weeks];
+    NSString *end = [NSString stringWithFormat:@"weeksAgoEnd_%ld", (long) weeks];
     
     NSPredicate *equalsPred = [NSPredicate predicateWithFormat:@"date BETWEEN %@", 
                                [NSArray arrayWithObjects:[NSExpression expressionForVariable:start], 

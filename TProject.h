@@ -22,8 +22,8 @@
 - (void) addTask: (TTask *) task;
 
 - (NSMutableArray *) matchingTasks:(NSPredicate*) filter;
-- (int) filteredTime:(NSPredicate*) filter;
-- (int) filteredTime:(NSPredicate*) filter closed:(BOOL) closed;
+- (NSInteger) filteredTime:(NSPredicate*) filter;
+- (NSInteger) filteredTime:(NSPredicate*) filter closed:(BOOL) closed;
 - (NSString*) findUniqueTaskNameBasedOn:(NSString*) baseName;
 - (BOOL) doesTaskNameExist:(NSString*)name;
 

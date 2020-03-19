@@ -29,6 +29,7 @@
 {
 	[_tasks release];
 	_tasks = nil;
+    [_name release];
 	[super dealloc];
 }
 #pragma mark -
@@ -156,7 +157,7 @@
     for (TTask* task in _tasks) {
         while ([task.name isEqualToString:curTaskName]) {
             uniqueMaker++;
-            curTaskName = [NSString stringWithFormat:@"%@ %d", baseName, uniqueMaker];
+            curTaskName = [NSString stringWithFormat:@"%@ %ld", baseName, (long) uniqueMaker];
         }
     }
     return curTaskName;
@@ -168,12 +169,12 @@
  * @param filter	the filter predicate which to match WorkPeriods
  * @param closed	only evaluate project have the matching closed state
  */
-- (int) filteredTime:(NSPredicate*) filter closed:(BOOL) closed
+- (NSInteger) filteredTime:(NSPredicate*) filter closed:(BOOL) closed
 {
 	if (filter == nil) {
 		return [self totalTime];
 	}
-	int result = 0;
+	NSInteger result = 0;
 	NSEnumerator *enumTasks = [_tasks objectEnumerator];
 	id<ITask> task;
 	while ((task = [enumTasks nextObject]) != nil) {
@@ -189,7 +190,7 @@
  * tasks are not closed. This will only collect times for not closed Tasks.
  * @param filter	the filter predicate which to match WorkPeriods
  */
-- (int) filteredTime:(NSPredicate*) filter
+- (NSInteger) filteredTime:(NSPredicate*) filter
 {
 	return [self filteredTime:filter closed:NO];
 }

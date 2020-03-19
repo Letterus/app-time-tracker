@@ -20,7 +20,7 @@
 
 - (IBAction) pickOutputFileClicked:(id) sender {
     NSSavePanel *sp;
-    int savePanelResult;
+    NSInteger savePanelResult;
     
     sp = [NSSavePanel savePanel];
     

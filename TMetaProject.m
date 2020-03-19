@@ -35,7 +35,7 @@
 	return result;
 }
 
-- (int) totalTime
+- (NSInteger) totalTime
 {
 	return [self calculateTime:NO];
 }
@@ -78,14 +78,14 @@
 	_projects = [projects retain];
 }
 
-- (TProject*) projectForTask:(TTask*)task returnIndex:(int*)taskIndex {
+- (TProject*) projectForTask:(TTask*)task returnIndex:(NSInteger*)taskIndex {
 	NSEnumerator *enumerator = [_projects objectEnumerator];
 	id aProject;
 	*taskIndex = -1;
 	
 	while (aProject = [enumerator nextObject])
 	{
-		NSUInteger result = [[aProject tasks] indexOfObject:task];
+		NSInteger result = [[aProject tasks] indexOfObject:task];
 		if (result != NSNotFound) {
 			*taskIndex = result;
 			return aProject;
@@ -96,13 +96,13 @@
 }
 
 - (id<IProject>) removeTask:(TTask*)task {
-	int index = -1;
+	NSInteger index = -1;
 	TProject *project = [self projectForTask:task returnIndex:&index];
 	[[project tasks] removeObject:task];
 	return self;
 }
 
-- (int) filteredTime:(NSPredicate*) filter
+- (NSInteger) filteredTime:(NSPredicate*) filter
 {
 	if (filter == nil) {
 		return [self totalTime];

@@ -80,4 +80,10 @@
 	_taskName = [name retain];
 }
 
+-(void)dealloc {
+    [_task release];
+    [_taskName release];
+    [super dealloc];
+}
+
 @end

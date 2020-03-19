@@ -16,7 +16,7 @@
 - (NSArray *) workPeriods;
 - (NSString*) name;
 - (id<ITask>) removeWorkPeriod:(TWorkPeriod*)period;
-- (int) filteredTime:(NSPredicate*) filter;
+- (NSInteger) filteredTime:(NSPredicate*) filter;
 - (int) taskId;
 - (BOOL) closed;
 - (void) updateTotalBySeconds:(int)diffInSeconds sender:(id)theSender;

@@ -45,7 +45,7 @@
     NSPopUpButton *qualifier = (NSPopUpButton*) [views objectAtIndex:1];
     NSTextField *field = (NSTextField*) [views objectAtIndex:2];
     int timeDeltaAgo = [field intValue];
-    int intervalIndex = [timeInterval indexOfSelectedItem];
+    NSUInteger intervalIndex = [timeInterval indexOfSelectedItem];
     NSInteger comparisonType = 0;
     TTTimeProvider *provider = [TTTimeProvider instance];
     
@@ -146,7 +146,7 @@
     } else {
         *start = NO;
     }
-    int startOfNumber = [variable rangeOfString:@"_"].location + 1;
+    NSUInteger startOfNumber = [variable rangeOfString:@"_"].location + 1;
     NSString *numString = [variable substringFromIndex:startOfNumber];
     *value = [numString intValue];
     return YES;
@@ -205,7 +205,7 @@
             break;
             
         default:
-            NSLog(@"Unexpected comparator: @%", predicate);
+            NSLog(@"Unexpected comparator: %@", predicate);
             break;
     }
     

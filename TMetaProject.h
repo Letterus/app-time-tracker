@@ -15,12 +15,12 @@
 	NSMutableArray *_projects;
 }
 
-- (int) totalTime;
+- (NSInteger) totalTime;
 - (void) updateTotalTime;
 - (NSArray *) tasks;
 - (void) setProjects:(NSMutableArray*) projects;
 - (NSString*) name;
-- (int) filteredTime:(NSPredicate*) filter;
+- (NSInteger) filteredTime:(NSPredicate*) filter;
 - (NSArray *) matchingTasks:(NSPredicate*) filter;
 
 @end

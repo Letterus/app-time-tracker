@@ -9,7 +9,7 @@
 #import "TTask.h"
 #import "TProject.h"
 
-static int _maxTaskId = 1;
+static NSInteger _maxTaskId = 1;
 
 #define CODERKEY_CLOSED @"Tclosed"
 #define CODERKEY_WORKPERIODS @"TWorkPeriods"
@@ -87,14 +87,14 @@ static int _maxTaskId = 1;
 */	
 }
 
-- (int) filteredTime:(NSPredicate*) filter
+- (NSInteger) filteredTime:(NSPredicate*) filter
 {
 	if (filter == nil) {
 		return [self totalTime];
 	}
 	NSEnumerator *enumPeriods = [[self matchingWorkPeriods:filter] objectEnumerator];
 	id anObject;
-	int result = 0;
+	NSInteger result = 0;
  
 	while (anObject = [enumPeriods nextObject])
 	{
@@ -109,7 +109,7 @@ static int _maxTaskId = 1;
     //[super encodeWithCoder:coder];
     if ( [coder allowsKeyedCoding] ) {
         [coder encodeObject:_name forKey:CODERKEY_TASKNAME];
-        [coder encodeInt:_taskId forKey:CODERKEY_TASK_ID];
+        [coder encodeInteger:_taskId forKey:CODERKEY_TASK_ID];
         [coder encodeObject:_workPeriods forKey:CODERKEY_WORKPERIODS];
         [coder encodeBool:_closed forKey:CODERKEY_CLOSED];
     } else {
@@ -126,7 +126,7 @@ static int _maxTaskId = 1;
         // Can decode keys in any order
         _name = [[coder decodeObjectForKey:CODERKEY_TASKNAME] retain];
         _workPeriods = [[NSMutableArray arrayWithArray: [coder decodeObjectForKey:CODERKEY_WORKPERIODS]] retain];
-        int taskId = [coder decodeIntForKey:CODERKEY_TASK_ID];
+        NSInteger taskId = [coder decodeIntForKey:CODERKEY_TASK_ID];
         if (taskId <= 0) {
             taskId = _maxTaskId + 1;
         }
@@ -170,13 +170,13 @@ static int _maxTaskId = 1;
 	return self;
 }
 
-- (void) setTaskId:(int)id 
+- (void) setTaskId:(NSInteger)id
 {
     _taskId = id;
     _maxTaskId = MAX(_taskId, _maxTaskId);
 }
 
-- (int) taskId
+- (NSInteger) taskId
 {
     return _taskId;
 }
@@ -210,4 +210,13 @@ static int _maxTaskId = 1;
 - (NSComparisonResult)compare:(id<ITask>)aTask {
 	return [self.name compare:aTask.name];
 }
+
+- (void) dealloc
+{
+    [_filterPredicate release];
+    [_parent release];
+    [_name release];
+    [super dealloc];
+}
+
 @end

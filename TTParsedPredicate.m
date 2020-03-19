@@ -77,7 +77,7 @@
             int value = 0;
             BOOL success = [scanner scanInt:&value];
             if (!success) {
-                NSLog(@"Scanner failed parsing int at %d", [scanner scanLocation]);
+                NSLog(@"Scanner failed parsing int at %ld", (long) [scanner scanLocation]);
             }
             NSString *key = [NSString stringWithFormat:@"%@%d", keyTemplate, value];
             TTTimeProvider *provider = [TTTimeProvider instance];
@@ -120,4 +120,8 @@
     return resultPred;
 }
 
+-(void) dealloc {
+    [_template release];
+    [super dealloc];
+}
 @end

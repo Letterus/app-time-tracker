@@ -13,24 +13,24 @@
 
 @synthesize decimalMode = _decimalMode;
 
-+ (NSString *) secondsToString: (int) seconds
++ (NSString *) secondsToString: (NSInteger) seconds
 {
-	int hours = seconds / 3600;
-	int minutes = (seconds % 3600) / 60;
-	int secs = seconds % 60;
-	return [NSString stringWithFormat: @"%@%d:%@%d:%@%d",
-		(hours < 10 ? @"0" : @""), hours,
-		(minutes < 10 ? @"0" : @""), minutes,
-		(secs < 10 ? @"0" : @""), secs];
+	NSInteger hours = seconds / 3600;
+	NSInteger minutes = (seconds % 3600) / 60;
+	NSInteger secs = seconds % 60;
+	return [NSString stringWithFormat: @"%@%ld:%@%ld:%@%ld",
+		(hours < 10 ? @"0" : @""), (long) hours,
+		(minutes < 10 ? @"0" : @""), (long) minutes,
+		(secs < 10 ? @"0" : @""), (long) secs];
 }
 
-+ (NSString*) secondsToDecimalHours: (int) seconds 
++ (NSString*) secondsToDecimalHours: (NSInteger) seconds
 {
     float hours = ((float) seconds) / 3600.0f;
     return [NSString stringWithFormat:@"%.2fh", hours];
 }
 
-- (NSString*) transformSeconds:(int) seconds {
+- (NSString*) transformSeconds:(NSInteger) seconds {
     if (_decimalMode) {
         return [TimeIntervalFormatter secondsToDecimalHours: seconds];
     } else {

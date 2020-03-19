@@ -24,6 +24,6 @@
 - (void) updateTotalTime;
 - (void) setTasks:(NSArray*)tasks;
 - (id<ITask>) removeWorkPeriod:(TWorkPeriod*)period;
-- (int) filteredTime:(NSPredicate*) filter;
+- (NSInteger) filteredTime:(NSPredicate*) filter;
 - (NSEnumerator*)objectEnumerator;
 @end

@@ -188,7 +188,7 @@
 -(NSDate*) determineFilterEndDate;
 
 - (BOOL) validateUserInterfaceItem:(id)anItem;
-- (TTask*) taskForWorkTimeIndex: (int) rowIndex timeIndex:(int*)resultIndex;
+- (TTask*) taskForWorkTimeIndex: (NSInteger) rowIndex timeIndex:(NSInteger*)resultIndex;
 
 
 // properties

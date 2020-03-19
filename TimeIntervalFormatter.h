@@ -15,9 +15,9 @@
     BOOL _decimalMode;
 }
 
-+ (NSString *) secondsToString: (int) seconds;
++ (NSString *) secondsToString: (NSInteger) seconds;
 
-+ (NSString*) secondsToDecimalHours: (int) seconds; 
++ (NSString*) secondsToDecimalHours: (NSInteger) seconds; 
 
 + (Class) transformedValueClass;
 
@@ -25,7 +25,7 @@
 
 - (id)transformedValue:(id) value;
 
-- (NSString*) transformSeconds:(int) seconds;
+- (NSString*) transformSeconds:(NSInteger) seconds;
 
 @property BOOL decimalMode;
 

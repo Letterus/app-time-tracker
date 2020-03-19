@@ -31,9 +31,12 @@
 
 - (id) init
 {
-	_startTime = nil;
-	_endTime = nil;
-	_comment = [[NSAttributedString alloc] init];
+    self = [super init];
+    if(self) {
+        _startTime = nil;
+        _endTime = nil;
+        _comment = [[NSAttributedString alloc] init];
+    }
 	return self;
 }
 
@@ -139,15 +142,15 @@
 
 - (NSString*)serializeData:(NSString*) prefix separator:(NSString*)sep
 {
-    int hours = _totalTime / 3600;
-    int minutes = _totalTime % 3600 / 60;
-    int seconds = _totalTime - hours * 3600 - minutes * 60;// % 60;
+    NSUInteger hours = _totalTime / 3600;
+    NSUInteger minutes = _totalTime % 3600 / 60;
+    NSUInteger seconds = _totalTime - hours * 3600 - minutes * 60;// % 60;
 	NSDateFormatter *formatter = [[[NSDateFormatter alloc] initWithDateFormat:@"%Y-%m-%d %H:%M:%S" allowNaturalLanguage:NO]  autorelease];
 	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] initWithDateFormat:@"%Y-%m-%d" allowNaturalLanguage:NO]  autorelease];
-	NSString* result = [NSString stringWithFormat:@"%@%@\"%@\"%@\"%@\"%@\"%@\"%@\"%02d:%02d:%02d\"%@\"%@\"\n", prefix, sep, 
+	NSString* result = [NSString stringWithFormat:@"%@%@\"%@\"%@\"%@\"%@\"%@\"%@\"%02ld:%02ld:%02ld\"%@\"%@\"\n", prefix, sep,
                         [dateFormatter stringFromDate:_startTime], sep,
                         [formatter stringFromDate:_startTime], sep, [formatter stringFromDate:_endTime], sep,
-                        hours, minutes, seconds, sep, [self strComment]];
+                        (long) hours, (long) minutes, (long) seconds, sep, [self strComment]];
 	return result;
 }
 
@@ -216,5 +219,15 @@
         self.date = [[TTTimeProvider instance] dateWithMidnight:self.startTime];
     }
     return _date;
+}
+
+-(void)dealloc
+{
+    [_startTime release];
+    [_endTime release];
+    [_date release];
+    [_comment release];
+    [_parent release];
+    [super dealloc];
 }
 @end

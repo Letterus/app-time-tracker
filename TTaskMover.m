@@ -29,4 +29,10 @@
 	[self.mainController reloadTasks];
 	return YES;
 }
+
+- (void) dealloc
+{
+    [_mainController release];
+    [super dealloc];
+}
 @end

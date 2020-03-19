@@ -96,7 +96,7 @@
 }
 
 
-- (TTask*) taskForWorkPeriod:(TWorkPeriod*)aPeriod returnIndex:(int*)wpIndex {
+- (TTask*) taskForWorkPeriod:(TWorkPeriod*)aPeriod returnIndex:(NSInteger*)wpIndex {
 	NSEnumerator *enumerator = [_tasks objectEnumerator];
 	id aTask;
 	*wpIndex = -1;
@@ -114,20 +114,20 @@
 }
 
 - (id<ITask>) removeWorkPeriod:(TWorkPeriod*)period {
-	int index = -1;
+	NSInteger index = -1;
 	TTask *task = [self taskForWorkPeriod:period returnIndex:&index];
 	[[task workPeriods] removeObject:period];
 	return self;
 }
 
-- (int) filteredTime:(NSPredicate*) filter
+- (NSInteger) filteredTime:(NSPredicate*) filter
 {
 	if (filter == nil) {
 		return [self totalTime];
 	}
 	NSEnumerator *enumPeriods = [[self matchingWorkPeriods:filter] objectEnumerator];
 	id anObject;
-	int result = 0;
+	NSInteger result = 0;
  
 	while (anObject = [enumPeriods nextObject])
 	{

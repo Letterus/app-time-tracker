@@ -9,12 +9,12 @@
 
 @protocol IProject<NSObject, NSCoding>
 
-- (NSInteger) totalTime;
+- (NSUInteger) totalTime;
 - (void) updateTotalTime;
 - (NSArray *) tasks;
 - (NSString*) name;
 - (id<IProject>) removeTask:(TTask*)task;
-- (int) filteredTime:(NSPredicate*) filter;
+- (NSInteger) filteredTime:(NSPredicate*) filter;
 - (BOOL) doesTaskNameExist:(NSString*)name;
 - (void)moveTask:(TTask *)task toIndex:(NSInteger)index;
 - (NSMutableArray *) matchingTasks:(NSPredicate*) filter;

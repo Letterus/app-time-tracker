@@ -19,7 +19,7 @@
 	NSInteger _totalTime;
 	NSMutableArray *_workPeriods;
 	TProject* _parent;
-    int _taskId;
+    NSInteger _taskId;
     BOOL _closed;
 	NSPredicate *_filterPredicate;
 }
@@ -30,7 +30,7 @@
 - (NSMutableArray *) workPeriods;
 - (NSArray *) matchingWorkPeriods:(NSPredicate*) filter;
 
-- (int) filteredTime:(NSPredicate*) filter;
+- (NSInteger) filteredTime:(NSPredicate*) filter;
 
 - (void) updateTotalTime;
 - (NSString*) serializeData:(NSString*) prefix separator:(NSString*) sep;
@@ -44,7 +44,7 @@
 @property(retain, nonatomic) NSPredicate* filterPredicate;
 @property(retain, nonatomic) NSString* name;
 @property(retain, nonatomic) TProject* parentProject;
-@property int taskId;
+@property NSInteger taskId;
 
 
 @end

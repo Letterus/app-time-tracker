@@ -105,7 +105,7 @@
 //	[_startMenu setTarget:self];
     [self loadData];
 
-    NSLog(@"Have MetaProject: %@, retainCount %d",_metaProject, [_metaProject retainCount]);
+    NSLog(@"Have MetaProject: %@, retainCount %ld",_metaProject, (long) [_metaProject retainCount]);
 	return self;
 }
 
@@ -191,17 +191,17 @@
 {
 }
 
-- (int) selectedTaskRow 
+- (NSInteger) selectedTaskRow
 {
 	return [tvTasks selectedRow] - 1;
 }
 
-- (int)selectedProjectRow
+- (NSInteger)selectedProjectRow
 {
 	return [tvProjects selectedRow] - 1;
 }
 
-- (int)selectedWorkPeriodRow
+- (NSInteger)selectedWorkPeriodRow
 {
 	
 	return [workPeriodController selectionIndex];
@@ -460,7 +460,7 @@
 	}
     // restore lru cache
     if (indexData != nil) {
-        int count = [indexData length] / sizeof(int);
+        NSInteger count = [indexData length] / sizeof(int);
         const int *ptrData = (const int*) [indexData bytes];
         int i = 0;
         for (i = 0; i < count && i < _maxLruSize; i++) {
@@ -566,7 +566,7 @@
 {
 	TWorkPeriod *wp = nil;
 	
-	int result = [self selectedWorkPeriodRow];
+	NSInteger result = [self selectedWorkPeriodRow];
 	TTask *task = [self taskForWorkTimeIndex:index timeIndex:&result];
 	wp = [[task workPeriods] objectAtIndex:result];
 	return wp;
@@ -684,9 +684,9 @@
 	BOOL doRefilter = NO;
 	// move the workperiod to a different task / project
 	if ([_taskPopupButton indexOfSelectedItem] > 0) {
-        int projectIndex = [_projectPopupButton indexOfSelectedItem];
+        NSInteger projectIndex = [_projectPopupButton indexOfSelectedItem];
 		TProject *selectedProject = [_projects objectAtIndex:projectIndex];
-        int taskIndex = [_taskPopupButton indexOfSelectedItem] - 1;
+        NSInteger taskIndex = [_taskPopupButton indexOfSelectedItem] - 1;
 		TTask *selectedTask = [[selectedProject tasks] objectAtIndex:taskIndex];
 		[self moveWorkPeriodToNewTask:wp task:selectedTask];
 		// in this case we need to update all the task filters, etc.
@@ -795,7 +795,7 @@
 		NSCalendar *cur = [NSCalendar currentCalendar];
 		NSDateComponents *comps = [cur components:NSWeekdayCalendarUnit fromDate:self.currentFilterCreationDate toDate:[NSDate date] options:0];
 		if ([comps weekdayOrdinal] > 0) {
-			NSLog(@"need to refresh filter, its %d days old", [comps day]);
+			NSLog(@"need to refresh filter, its %ld days old", (long) [comps day]);
 			// ok our current filter is out of date, so refresh it
 			[self refreshCurrentFilterPredicate];
 		} else {
@@ -906,12 +906,12 @@
     NSUInteger count = [_lruTasks count];
     NSMutableData *lruData = [[NSMutableData alloc] initWithCapacity:count * sizeof(int)];
     [lruData setLength:count * sizeof(int)];
-    int* ptrData = (int*) [lruData mutableBytes];
+    NSInteger* ptrData = (NSInteger*) [lruData mutableBytes];
 
     NSEnumerator *enumLruTasks = [_lruTasks objectEnumerator];
     TTask *task = nil;
     while ((task = [enumLruTasks nextObject]) != nil) {
-        *ptrData = NSSwapHostIntToBig([task taskId]);
+        *ptrData = NSSwapHostLongToBig([task taskId]);
         ptrData++;
     }
     [rootObject setValue:lruData forKey:@"lruIndexes"];
@@ -985,7 +985,7 @@
 
 #pragma mark document methods (will be moved to document class eventually)
 
-- (void)moveProject:(TProject *)proj toIndex:(int)index
+- (void)moveProject:(TProject *)proj toIndex:(NSInteger)index
 {
 	NSInteger oldIndex = [_projects indexOfObject:proj];
 	if (oldIndex == NSNotFound)
@@ -1004,7 +1004,7 @@
 - (IBAction)actionExport:(id)sender
 {
     NSSavePanel *sp;
-    int savePanelResult;
+    NSInteger savePanelResult;
     
     sp = [NSSavePanel savePanel];
 
@@ -1047,14 +1047,14 @@
 
 
 
-- (TTask*) taskForWorkTimeIndex: (int) rowIndex timeIndex:(int*)resultIndex {
+- (TTask*) taskForWorkTimeIndex: (NSInteger) rowIndex timeIndex:(NSInteger*)resultIndex {
 	NSEnumerator *enumerator = [[_selProject tasks] objectEnumerator];
 	id aTask;
 	*resultIndex = rowIndex;
 	
 	while (aTask = [enumerator nextObject])
 	{
-		int count = [[aTask workPeriods] count];
+		NSInteger count = [[aTask workPeriods] count];
 		if (count > *resultIndex) {
 			break;
 		}
@@ -1067,7 +1067,7 @@
 {
 	[self createProject];
 
-	int index = [_projects count];
+	NSInteger index = [_projects count];
 	[tvProjects editColumn:[tvProjects columnWithIdentifier:@"ProjectName"] row:index withEvent:nil select:YES];
 }
 
@@ -1077,7 +1077,7 @@
 	[_projects addObject: proj];
     [proj release];
 	[tvProjects reloadData];
-	int index = [_projects count];
+	NSInteger index = [_projects count];
 	[tvProjects selectRowIndexes:[NSIndexSet indexSetWithIndex:index] byExtendingSelection:NO];
 	[mainWindow makeFirstResponder:tvProjects];
     return proj;
@@ -1087,7 +1087,7 @@
 {
 	[self createTask];
 
-	int index = [[_selProject tasks] count];
+	NSInteger index = [[_selProject tasks] count];
 	[tvTasks editColumn:[tvTasks columnWithIdentifier:@"TaskName"] row:index withEvent:nil select:YES];
 }
 
@@ -1284,7 +1284,7 @@
 		NSBeep();
 		return;
 	}
-    int iResponse = 
+    NSInteger iResponse =
         NSRunAlertPanel(@"Delete selection", 
                     @"Are you sure to delete the selected item(s)?",
                     @"YES", @"NO", /*ThirdButtonHere:*/nil
@@ -1360,7 +1360,7 @@
         return;
 	}
     
-	int iResponse = 
+	NSInteger iResponse =
         NSRunAlertPanel(@"Delete selection", 
                         @"Are you sure to delete the selected item(s)?",
                         @"YES", @"NO", /*ThirdButtonHere:*/nil
@@ -1561,7 +1561,7 @@
 
 - (void)updateProminentDisplay
 {
-    int seconds = 0;
+    NSInteger seconds = 0;
     if (_showTimeInMenuBar && _curWorkPeriod != nil) {
         seconds = [_curWorkPeriod totalTime];
     }
@@ -1879,7 +1879,7 @@
 			return [project name];
 		}
 		if ([[tableColumn identifier] isEqualToString: @"TotalTime"]) {
-            int seconds = [project filteredTime:[self filterPredicate]];
+            NSInteger seconds = [project filteredTime:[self filterPredicate]];
             return [_intervalValueFormatter transformSeconds:seconds];
 		}
 	}
@@ -1900,7 +1900,7 @@
 			return [task name];
 		}
 		if ([[tableColumn identifier] isEqualToString: @"TotalTime"]) {
-            int seconds = [task filteredTime:[self filterPredicate]];
+            NSInteger seconds = [task filteredTime:[self filterPredicate]];
             return [_intervalValueFormatter transformSeconds:seconds];
 		}
 	}
@@ -1973,7 +1973,7 @@
 		NSData *rowsData = [[info draggingPasteboard] dataForType:PBOARD_TYPE_PROJECT_ROWS];
 		NSIndexSet *indexSet = [NSKeyedUnarchiver unarchiveObjectWithData:rowsData];
 		
-		int sourceRow = [indexSet firstIndex] - 1;
+		NSInteger sourceRow = [indexSet firstIndex] - 1;
         //		[document moveProject:[document objectInProjectsAtIndex:sourceRow] toIndex:row];
         TProject* sourceProject = [_projects objectAtIndex:sourceRow];
 		[self moveProject:sourceProject toIndex:row - 1];
@@ -1986,7 +1986,7 @@
 		NSData *rowsData = [[info draggingPasteboard] dataForType:PBOARD_TYPE_TASK_ROWS];
 		NSIndexSet *indexSet = [NSKeyedUnarchiver unarchiveObjectWithData:rowsData];
 		
-		int sourceRow = [indexSet firstIndex] - 1;
+		NSInteger sourceRow = [indexSet firstIndex] - 1;
 		[_selProject moveTask:[_selProject.tasks objectAtIndex:sourceRow] toIndex:row - 1];
 		
 		[tvTasks reloadData];
@@ -2113,6 +2113,12 @@
     [_greyCol release];
 	[_startTaskMenuDelegate release];
     [_taskNameTransformer release];
+    [_extraFilterPredicate release];
+    [_selProject release];
+    [_selProject release];
+    [_selTask release];
+    [_taskEditorController release];
+    [_updateURL release];
     [super dealloc];
 }
 
