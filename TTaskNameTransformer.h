@@ -6,8 +6,7 @@
 //  Copyright 2010 N/A. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <AppKit/AppKit.h>
+#import <Cocoa/Cocoa.h>
 
 
 @interface TTaskNameTransformer : NSValueTransformer {

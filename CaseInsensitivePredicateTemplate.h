@@ -50,8 +50,7 @@ Copyright � 2006-2007 Apple Inc. All Rights Reserved
 
 */
 
-#import <Foundation/Foundation.h>
-#import <AppKit/AppKit.h>
+#import <Cocoa/Cocoa.h>
 
 @interface CaseInsensitivePredicateTemplate : NSPredicateEditorRowTemplate 
 

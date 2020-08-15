@@ -36,6 +36,7 @@
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		B19BDFBC0B5C953700465046 /* Time Tracker.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D1107320486CEB800E47090 /* Time Tracker.app */; };
+		D41EE13424E8250B00873707 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41EE13324E8250A00873707 /* IOKit.framework */; };
 		D43B029623C666EB0033BCD1 /* SearchQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = D43B026823C666E60033BCD1 /* SearchQuery.m */; };
 		D43B029723C666EB0033BCD1 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = D43B026B23C666E60033BCD1 /* PreferencesController.m */; };
 		D43B029823C666EB0033BCD1 /* TTask.m in Sources */ = {isa = PBXBuildFile; fileRef = D43B026E23C666E60033BCD1 /* TTask.m */; };
@@ -118,6 +119,7 @@
 		B163D4050B646239007D0E2C /* LICENSE-GPL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-GPL.txt"; sourceTree = "<group>"; };
 		B19BDFC10B5C956700465046 /* ChangeLog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog.txt; sourceTree = SOURCE_ROOT; };
 		B19BDFC20B5C956700465046 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = SOURCE_ROOT; };
+		D41EE13324E8250A00873707 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		D43B026623C666E50033BCD1 /* TTParsedPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTParsedPredicate.h; sourceTree = "<group>"; };
 		D43B026723C666E60033BCD1 /* TMetaTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMetaTask.h; sourceTree = "<group>"; };
 		D43B026823C666E60033BCD1 /* SearchQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchQuery.m; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				D41EE13424E8250B00873707 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +261,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D41EE13324E8250A00873707 /* IOKit.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);

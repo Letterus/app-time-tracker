@@ -6,8 +6,7 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <AppKit/AppKit.h>
+#import <Cocoa/Cocoa.h>
 
 
 @interface WorkPeriodMainPredicateTemplate : NSPredicateEditorRowTemplate {
