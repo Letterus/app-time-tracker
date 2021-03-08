@@ -846,8 +846,8 @@
         </window>
         <menu title="MainMenu" systemMenu="main" id="29" userLabel="MainMenu">
             <items>
-                <menuItem title="NewApplication" id="56">
-                    <menu key="submenu" title="NewApplication" systemMenu="apple" id="57">
+                <menuItem title="Time Tracker" id="56">
+                    <menu key="submenu" title="Time Tracker" systemMenu="apple" id="57">
                         <items>
                             <menuItem title="About Time Tracker" id="58">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -1040,6 +1040,7 @@ CA
                     </menu>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="70" y="760"/>
         </menu>
         <customObject id="211" userLabel="MainController" customClass="MainController">
             <connections>
