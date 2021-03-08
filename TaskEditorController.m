@@ -59,6 +59,7 @@
                         /*, args for a printf-style msg go here */);
         }
     }
+    NSLog(@"Task name in field is %@", self.taskName);
 	self.task.name = self.taskName;
 	self.task.closed = self.completed;
 	NSLog(@"applying new name: %@, completd %d",self.task.name, self.task.closed);
@@ -69,16 +70,6 @@
 #pragma mark -
 #pragma mark Property accessors 
 // ============================
-
-/* For some unkown reasons automatic implementation of the setter is bogus. */
-
--(void) setTaskName:(NSString*)name {
-	if (name == _taskName) {
-		return;
-	}
-	[_taskName release];
-	_taskName = [name retain];
-}
 
 -(void)dealloc {
     [_task release];
